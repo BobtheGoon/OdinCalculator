@@ -4,25 +4,61 @@ h2 {
 
 .calcBody {
     display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
     width: 500px;
     height: 800px;
     background-color: gray;
     margin: auto;
-    justify-content: center;
     border-radius: 10px;
-    background-image: linear-gradient(to right, gray, rgb(143, 143, 143));
+    background-image: linear-gradient(to right, gray, rgb(170, 170, 170));
 }
 
-.display {
+#display {
     display: flex;
-    width: 480px;
+    flex: 0 1 auto;
+    flex-direction: column;
+    align-self: top;
+    justify-content: center;
+    align-items: flex-end;
+    width: 450px;
     height: 100px;
     background-color: rgb(113, 153, 115);
-    margin: 10px;
+    margin: 15px 0px;
     padding: 10px;
-    align-self: top;
-    justify-content: end;
-    align-items: center;
     border-radius: 10px;
     font-size: 50px;
+}
+
+#solved {
+    
+}
+
+#current {
+    
+}
+
+.keypad {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.keypad div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.one-edge-shadow {
+	-webkit-box-shadow: 8px 0px 6px 1px #ccc;
+	   -moz-box-shadow: 8px 0px 6px 1px #ccc;
+	        box-shadow: 8px 0px 6px 1px #ccc;
 }
