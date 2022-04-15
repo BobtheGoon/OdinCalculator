@@ -8,14 +8,14 @@ h2 {
     justify-content: start;
     align-items: center;
     width: 500px;
-    height: 800px;
+    height: 550px;
     background-color: gray;
     margin: auto;
     border-radius: 10px;
     background-image: linear-gradient(to right, gray, rgb(170, 170, 170));
 }
 
-#display {
+.display {
     display: flex;
     flex: 0 1 auto;
     flex-direction: column;
@@ -45,7 +45,7 @@ h2 {
     flex-wrap: wrap;
 }
 
-.keypad div {
+.keypad button {
     display: flex;
     justify-content: center;
     align-items: center;
