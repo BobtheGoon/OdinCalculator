@@ -27,13 +27,46 @@ function operate(operator, num1, num2) {
     return operator(num1, num2)
 }
 
-num1 = null;
-num2 = null;
+function clearScreen() {
+    current = document.querySelector('#current');
+    current.textContent = ''
+
+    solved = document.querySelector('#solved');
+    solved.textContent = ''
+
+    num1 = []
+}
+
+function updateScreen() {
+    fullNumber = '';
+    for (number of num1) {
+        fullNumber += number;
+    }
+
+    current = document.querySelector('#current');
+    current.textContent = fullNumber;
+}
+
+num1 = [];
+num2 = [];
 
 buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        alert(button.id);
-    })
-});
+        if (button.id === 'clear') {
+            clearScreen();
+        }
+
+        else if (!isNaN(button.id)) {
+            if (+button.id === 0 && num1.length === 0) {
+                console.log('cannot start with 0')
+                }
+            else {
+                num = +button.id
+                num1.push(num)
+                updateScreen()
+                }
+            }
+        }
+    )});
