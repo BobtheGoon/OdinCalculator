@@ -17,23 +17,30 @@ function divide(num1, num2) {
 
 //Program functions
 function operate(operation, num1, num2) {
+    num1 = +num1
+    num2 = +num2
+
     if (operation === 'add') {
         solution = add(num1, num2)
     }
 
-    else if (operation === 'subtract') {
+    if (operation === 'subtract') {
         solution = subtract(num1, num2)
     }
 
-    else if (operation === 'multiply') {
+    if (operation === 'multiply') {
         solution = multiply(num1, num2)
     }
 
-    else if (operation === 'divide') {
+    if (operation === 'divide') {
+        if (num2 === 0) {
+            console.log('Wize guy eh?')
+            return
+        }
         solution = divide(num1, num2)
     }
 
-    else if (operation === 'equals') {
+    if (operation === 'equals') {
         return
     }
 
@@ -41,8 +48,8 @@ function operate(operation, num1, num2) {
 }
 
 function clearScreen() {
-    solved = []
-    current = []
+    solved = ''
+    current = ''
 }
 
 function addNumberToCurrent(number){
@@ -57,18 +64,32 @@ function startsWithZero(){
 }
 
 function updateCurrentDisplay(){
-    return
+    currentDisp = document.querySelector('#current')
+    currentDisp.textContent = current
+}
+
+function updateSolvedDisplay(){
+    solvedDisp = document.querySelector('#solved')
+    solvedDisp.textContent = solved
+}
+
+function notSolving(){
+    if (solved.length === 0) {
+        return true
+    }
+    return false
 }
 
 
 //Main program
-OPERATORS = ['add', 'subtract', 'multiply', 'divide', 'equals']
+OPERATORS = ['add', 'subtract', 'multiply', 'divide']
 operating = false
+operator = ''
 solved = ''
 current = ''
 
+//Button event listener
 buttons = document.querySelectorAll('button')
-
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.id === 'clear') {
@@ -82,12 +103,31 @@ buttons.forEach((button) => {
             }
             else {
                 addNumberToCurrent(button.id)
-                console.log(current)
             }
         }
 
-        else if (OPERATORS.includes(button.id)) {
-            console.log('operator')
+        else if (button.id === 'equals' || operating) {
+            solved = operate(operator, solved, current)
+            operating = false
+            operator = ''
+            current = ''
         }
+
+        else if (OPERATORS.includes(button.id)) {
+            if (solved === '') {
+                solved = current
+            }
+            current = ''
+            operator = button.id
+            operating = true
+        }
+
+        //Update display at the end of the listener loop
+        updateSolvedDisplay()
+        updateCurrentDisplay()
+        console.log('current = ' + current)
+        console.log('solved = ' + solved)
+        console.log('operator = ' + operator)
+        console.log('operating = ' + operating)
+        })
     })
-})
