@@ -34,8 +34,7 @@ function operate(operation, num1, num2) {
 
     if (operation === 'divide') {
         if (num2 === 0) {
-            console.log('Wize guy eh?')
-            return
+            return 'Wize guy eh?'
         }
         solution = divide(num1, num2)
     }
